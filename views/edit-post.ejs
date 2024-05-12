@@ -1,0 +1,78 @@
+<%- include("partials/header.ejs") %>
+
+<div id="id02">
+  <div
+    class="w3-modal-content w3-animate-zoom w3-card-6 w3-animate-zoom"
+    style="max-width: 90%"
+  >
+    <div class="w3-center"></div>
+
+    <h2 class="w3-center">Edit a Post</h2>
+    <form
+    class="w3-container"
+    method="POST"
+    action="/edit-post/<%= data.id %>?method=PUT" 
+    enctype="multipart/form-data"
+  >
+      <div class="w3-section">
+        <label for="title"><b>Title:</b></label>
+        <input
+          id="title"
+          class="w3-input w3-border w3-margin-bottom"
+          type="text"
+          placeholder="Enter the Title"
+          value="<%= data.title %>"
+          name="title"
+        />
+        <label for="content"><b>Body:</b></label>
+
+        <textarea
+        id="content"
+          rows="6"
+          cols="12"
+          class="w3-input w3-border w3-margin-bottom"
+          name="body"
+          placeholder="Enter content"
+        >
+        <%= data.content %>
+        </textarea>
+        <div>
+          <label for="image"><b>Upload Image:</b></label>
+          <img
+            src="images/placeholder.png"
+            alt="image"
+            id="img"
+            class="img-placeholder"
+            name="image"
+          /><br />
+          <input
+            type="file"
+            class="w3-input w3-margin-bottom"
+            id="imgURL"
+            name="image"
+            value="<%= data.image %>"
+          />
+        </div>
+        <button
+          class="w3-button w3-gray w3-section w3-padding w3-margin-bottom"
+          type="submit"
+        >
+          Update
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+    let img =document.getElementById("image");
+       let inputFile =document.getElementById("imgURL");
+       
+       inputFile.onchange =function(){
+           image.src = URL.createObjectURL(inputFile.files[0])
+       };
+       
+</script>
+<%- include("partials/footer.ejs") %>
+</body>
+</html>
+

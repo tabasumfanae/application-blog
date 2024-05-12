@@ -1,0 +1,77 @@
+<%- include("partials/header.ejs") %>
+
+    <div id="id01" >
+      <div
+      class="w3-modal-content w3-animate-zoom w3-card-4 w3-animate-zoom"
+        style="max-width: 90%"
+      >
+        <h2 class="w3-center">Add a New Post</h2>
+        <form
+          class="w3-container"
+          action="/posts"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="w3-section">
+            <label for="title"><b>Title:</b></label>
+            <input
+              class="w3-input w3-border w3-margin-bottom"
+              type="text"
+              id="title"
+              placeholder="Enter the Title"
+              name="title"
+              required
+            />
+            <label for="content"><b>Body:</b></label>
+
+            <textarea
+             id="content"
+              rows="6"
+              cols="12"
+              class="w3-input w3-border w3-margin-bottom"
+              required
+              name="body"
+              placeholder="Enter content"
+            >
+            </textarea>
+            <div>
+              <label for="image"><b>Upload Image:</b></label>
+              <input
+                type="file"
+                id="imgURL"
+                class="w3-input w3-margin-bottom"
+                accept="image/jpg , image/png , image/jpeg"
+                name="image"
+                required
+              />
+            </div>
+            <img
+              src="images/placeholder.png"
+             class="img-placeholder" 
+              alt="image"
+              id="image"
+              name="image"
+            /><br />
+            <button
+              class="w3-button w3-gray w3-section w3-padding w3-margin-bottom"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+
+        <script>
+          let placeholderImage = document.getElementById("image");
+          let inputFile = document.getElementById("imgURL");
+
+          inputFile.onchange = function () {
+            image.src = URL.createObjectURL(inputFile.files[0]);
+          };
+        </script>
+      </div>
+    </div>
+    <%- include("partials/footer.ejs") %>
+  </body>
+</html>
+
